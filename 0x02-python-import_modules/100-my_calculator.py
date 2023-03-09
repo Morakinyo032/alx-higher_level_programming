@@ -1,6 +1,9 @@
 #!/usr/bin/python3
-import calculator_1 as cal
-import sys
+def main():
+    pass
+
+
+import sys, calculator_1 as cal
 args = sys.argv
 size = len(args)
 if size != 4:
@@ -23,4 +26,4 @@ else:
 sys.exit(0)
 
 if __name__ == " __main__":
-    pass
+    main()
