@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-if __name__ == " __main__":
+def main():
     pass
+
 
 import sys, calculator_1 as cal
 args = sys.argv
@@ -11,6 +12,7 @@ if size != 4:
 a = int(args[1])
 b = int(args[3])
 c = args[2]
+flagg = 0
 if c == '+':
     print("{:d} + {:d} = {:d}".format(a, b, cal.add(a, b)))
 elif c == '-':
@@ -21,5 +23,10 @@ elif c == '/':
     print("{:d} / {:d} = {:d}".format(a, b, cal.div(a, b)))
 else:
     print("Unknown operator. Available operators: +, -, * and /")
+    flag = 1
+if __name__ == " __main__":
+    main()
+if flag == 0:
+    sys.exit(0)
+else:
     sys.exit(1)
-sys.exit(0)
