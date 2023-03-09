@@ -12,7 +12,7 @@ if size != 4:
 a = int(args[1])
 b = int(args[3])
 c = args[2]
-flagg = 0
+flag = 0
 if c == '+':
     print("{:d} + {:d} = {:d}".format(a, b, cal.add(a, b)))
 elif c == '-':
