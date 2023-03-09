@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-def main():
+if __name__ == " __main__":
     pass
-
 
 import sys, calculator_1 as cal
 args = sys.argv
@@ -24,6 +23,3 @@ else:
     print("Unknown operator. Available operators: +, -, * and /")
     sys.exit(1)
 sys.exit(0)
-
-if __name__ == " __main__":
-    main()
