@@ -3,7 +3,7 @@ if __name__ == "__main__":
     from calculator_1 import add, mul, div, sub
     from sys import exit, argv
     length = len(argv)
-    flag = 0;
+    flag = 0
     if length != 4:
         print("Usage: ./100-my_calculator.py <a> <operator> <b>")
         flag = 1
@@ -23,7 +23,7 @@ if __name__ == "__main__":
             op = add
         if b not in operators:
             print("Unknown operator. Available operators: +, -, * and /")
-            flag = 1;
+            flag = 1
         else:
             print("{:d} {} {:d} = {:d}".format(a, b, c, op(a, c)))
     if flag == 0:
