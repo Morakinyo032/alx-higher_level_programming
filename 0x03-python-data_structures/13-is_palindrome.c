@@ -36,7 +36,6 @@ int is_palindrome(listint_t **head)
 		return (1);
 	if (*head == NULL)
 		return (1);
-	ptr = *head;
 	for (i = 1; i <= len / 2; i++)
 	{
 		ptr1 = ptr;
