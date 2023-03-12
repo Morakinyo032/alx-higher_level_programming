@@ -1,52 +1,42 @@
-#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "lists.h"
 /**
- * list_len - Finds the number of node in a singly linked list
- * @head: Head pointer
- *
- * Return: Number of nodes
- */
-int list_len(listint_t *head)
-{
-	listint_t *ptr;
-	int len;
-
-	len = 0;
-	ptr = head;
-	while (ptr != NULL)
-	{
-		len += 1;
-		ptr = ptr->next;
-	}
-	return (len);
-}
-/**
- * is_palindrome - checks if a singly linked list is palindrome
- * @head: Pointer to head pointer
- *
- * Return: 1 if true, 0 otherwise
+ * is_palindrome - Checks if a singly linked list is a palindrome
+ * @head: Pointer to singly linked list
+ * Return: 1 if true or 0 otherwise
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *ptr, *ptr1;
-	int len, i, j;
+	listint_t *current;
+	int i, j, list_size;
+	listint_t **buffer;
 
-	len = list_len(*head);
-	if (len == 1)
-		return (1);
-	if (*head == NULL)
-		return (1);
-	ptr = *head;
-	for (i = 1; i <= len / 2; i++)
+	current = *head;
+	list_size = 0;
+	while (current != NULL)
 	{
-		ptr1 = ptr;
-		for (j = i; j <= len - i; j++)
-		{
-			ptr1 = ptr1->next;
-		}
-		if (ptr->n != ptr1->n)
+		list_size = list_size + 1;
+		current = current->next;
+	}
+	buffer = malloc(sizeof(listint_t *) * (list_size));
+	if (buffer == NULL)
+	{
+		printf("malloc() error");
+		return (-1);
+	}
+	current = *head;
+	i = 0;
+	while (current != NULL)
+	{
+		buffer[i] = current;
+		current = current->next;
+		i = i + 1;
+	}
+	for (j = 0; j < i / 2; j++)
+	{
+		if (buffer[j]->n != buffer[i - j - 1]->n)
 			return (0);
-		ptr = ptr->next;
 	}
 	return (1);
 }
