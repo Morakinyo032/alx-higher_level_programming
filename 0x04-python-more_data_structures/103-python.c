@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "object.h"
 #include "listobject.h"
-#include <object.h>
 #include <bytesobject.h>
 /**
  * print_python_bytes - Prints basic info on python bytes object
