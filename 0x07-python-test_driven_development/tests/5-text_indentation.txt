@@ -1,0 +1,42 @@
+>>> def text_indentation(text):
+...     if type(text) != str:
+...         raise TypeError("text must be a string")
+...     else:
+...         for i in range(len(text)):
+...             if i > 0:
+...                 if text[i - 1] == '.' or text[i - 1] == '?' or text[i - 1] == ':':
+...                     if text[i] == " ":
+...                         print("\n")
+...                     else:
+...                         print("\n")
+...                         print(text[i], end="")
+...                 else:
+...                     print(text[i], end="")
+...             else:
+...                     print(text[i], end="")
+...         print("")
+...
+>>> text_indentation("57854. How was your night?322424")
+57854.
+<BLANKLINE>
+How was your night?
+<BLANKLINE>
+322424
+>>> text_indentation("Good morning Marvel. How was your night? Do have a successful.")
+Good morning Marvel.
+<BLANKLINE>
+How was your night?
+<BLANKLINE>
+Do have a successful.
+>>> text_indentation("")
+<BLANKLINE>
+>>> text_indentation(None)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 3, in text_indentation
+TypeError: text must be a string
+>>> text_indentation(3535)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 3, in text_indentation
+TypeError: text must be a string

@@ -1,0 +1,28 @@
+>>> def say_my_name(first_name, last_name=""):
+...     """
+...     Prints "My name is <first_name> <last_name>"
+...     """
+...     if type(first_name) != str:
+...         raise TypeError("first_name must be a string")
+...     if type(last_name) != str:
+...         raise TypeError("last_name must be a string")
+...     if len(first_name) == 0 or len(last_name) == 0:
+...         pass
+...     print("My name is {} {}".format(first_name, last_name))
+...
+>>> say_my_name("Morakinyo", "Ibraheem")
+My name is Morakinyo Ibraheem
+>>> say_my_name()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+>>> say_my_name(12, "Marvel")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 6, in say_my_name
+TypeError: first_name must be a string
+>>> say_my_name("Marvel", 3)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 8, in say_my_name
+TypeError: last_name must be a string

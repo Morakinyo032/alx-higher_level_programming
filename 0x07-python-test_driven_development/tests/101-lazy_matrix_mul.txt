@@ -1,0 +1,78 @@
+>>> import numpy as np
+>>> def lazy_matrix_mul(m_a, m_b):
+...     """
+...     Multiplies two matrices and return their product.
+...     """
+...     if type(m_a) != list:
+...         raise TypeError("m_a must be a list")
+...     if type(m_b) != list:
+...         raise TypeError("m_b must be a list")
+...     for row in m_a:
+...         if type(row) != list: 
+...             raise TypeError("m_a must be a list of lists")
+...     for row in m_b:
+...         if type(row) != list: 
+...             raise TypeError("m_b must be a list of lists")
+...     if m_a == [] or m_a == [[]]:
+...         raise ValueError("m_a can't be empty")
+...     if m_b == [] or m_b == [[]]:
+...         raise ValueError("m_b can't be empty")
+...     for row in m_a:
+...         for element in row:
+...             if type(element) not in [int, float]:
+...                 raise TypeError("m_a should contain only integers or floats")
+...     for row in m_b:
+...         for element in row:
+...             if type(element) not in [int, float]:
+...                 raise TypeError("m_b should contain only integers or floats")
+...     for i in range(len(m_a)):
+...         if len(m_a[0]) != len(m_a[i]):
+...             raise TypeError("each row of m_a must be of the same size")
+...     for i in range(len(m_b)):
+...         if len(m_b[0]) != len(m_b[i]):
+...             raise TypeError("each row of m_b must be of the same size")
+...     if len(m_a[0]) != len(m_b):
+...         raise ValueError("m_ and m_b can't be multiplied")
+...     a, b = np.array(m_a), np.array(m_b)
+...     return (a @ b)
+... 
+>>> lazy_matrix_mul(np.arange(16).reshape(4, 4), np.arange(12).reshape(4, 3))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 6, in lazy_matrix_mul
+TypeError: m_a must be a list
+>>> lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]])
+array([[13, 16]])
+>>> lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6], [8, 9]])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 34, in lazy_matrix_mul
+ValueError: m_ and m_b can't be multiplied
+>>> lazy_matrix_mul(3, [[3, 4], [5, 6], [8, 9]])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 6, in lazy_matrix_mul
+TypeError: m_a must be a list
+>>> lazy_matrix_mul("All", [[3, 4], [5, 6], [8, 9]])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 6, in lazy_matrix_mul
+TypeError: m_a must be a list
+>>> lazy_matrix_mul([[]])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
+>>> lazy_matrix_mul([])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
+>>> lazy_matrix_mul([], [[3, 4], [5, 6], [8, 9]])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 16, in lazy_matrix_mul
+ValueError: m_a can't be empty
+>>> lazy_matrix_mul([[]], [[3, 4], [5, 6], [8, 9]])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 16, in lazy_matrix_mul
+ValueError: m_a can't be empty

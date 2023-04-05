@@ -1,0 +1,59 @@
+>>> matrix = [
+... [1, 2, 3],
+... [4, 5, 6]
+... ]
+>>> def matrix_divided(matrix, div):
+...     for row in matrix:
+...         for ele in row:
+...             if type(ele) != int and type(ele) != float:
+...                 raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+...     for i in range(len(matrix)):
+...         try:
+...             if len(matrix[i]) != len(matrix[i + 1]):
+...                 raise TypeError("Each row of the matrix must be of the same size")
+...         except IndexError:
+...             pass
+...     if type(div) != int and type(div) != float:
+...         raise TypeError("dib must be a number")
+...     if div == 0:
+...         raise ZeroDivisionError("division by zero")
+...     new_matrix = [[float("{:.2f}".format(x / div)) if x % div != 0 else float("{:.1f}".format(x / div)) for x in row] for row in matrix]
+...     return (new_matrix)
+...
+>>> matrix_divided(matrix, 3)
+[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+>>> matrix2 = [
+... ['a', 3, 'f'],
+... [0, 4, 6]
+... ]
+>>> matrix_divided(matrix2, 2)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 5, in matrix_divided
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+>>> matrix_divided(matrix, 0)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 15, in matrix_divided
+ZeroDivisionError: division by zero
+>>> matrix3 = [
+... [0, 4, 6]
+... ]
+>>> matrix4 = [
+... [0, 4, 6],
+... [4, 7, 3, 5]
+... ]
+>>> matrix_divided(matrix3, 6)
+[[0.0, 0.67, 1.0]]
+>>> matrix_divided(matrix4, 6)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 9, in matrix_divided
+TypeError: Each row of the matrix must be of the same size
+>>> matrix5 = [
+... []
+... ]
+>>> matrix_divided(matrix5, 6)
+[[]]
+>>> matrix
+[[1, 2, 3], [4, 5, 6]]
